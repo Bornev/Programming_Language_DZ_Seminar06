@@ -1,0 +1,102 @@
+
+// Задача 1: Задайте двумерный массив символов (тип char [,]). Создать строку из символов этого массива.
+// Пример:
+// a b c => “abcdef”
+// d e f 
+
+string CharsOfString(char[,] arr)
+{
+    string st= "";
+    for (int rowIndex = 0; rowIndex < arr.GetLength(0); rowIndex++)
+{
+    for (int columnIndex = 0; columnIndex < arr.GetLength(1); columnIndex++)
+{
+    st +=arr[rowIndex,columnIndex];
+}
+}
+
+return st;
+}
+
+
+
+char[,] chars=new char[,] 
+{
+    {'a', 'b', 'c'},
+    {'d', 'e', 'f'}
+};
+Console.Write(CharsOfString(chars));
+
+
+// Задача 2: Задайте строку, содержащую латинские буквы в обоих регистрах. Сформируйте строку, в которой все заглавные 
+// буквы заменены на строчные.
+// Пример:
+// “aBcD1ef!-” => “abcd1ef!-”
+
+
+Console.Write("Введите текст: ");
+string st = Console.ReadLine()!;
+Console.Write(st.ToLower());
+
+
+
+
+
+// Задача 3: Задайте произвольную строку. Выясните, является ли она палиндромом.
+// Пример:
+// “aBcD1ef!-” => Нет
+// “шалаш” => Да
+// “55655” => Да
+
+using System.Text;
+
+bool IsCheckingPolyndromes(string Input)
+{
+    for (int i = 0; i < Input.Length / 2; i++)
+    {
+        if (Input[i] != Input[Input.Length - 1 - i])
+        {
+            return false;
+        }
+       
+    }
+    return true;
+}
+
+Console.InputEncoding = Encoding.Unicode;
+Console.OutputEncoding = Encoding.Unicode;
+Console.Write("Введите строку: ");
+string InputString = Console.ReadLine()!;
+
+if (IsCheckingPolyndromes(InputString))
+{
+    Console.Write("Да");
+}
+
+else
+{
+    Console.Write("Нет");
+
+
+// Задача 4*(не обязательная): Задайте строку, состоящую из слов, разделенных пробелами. Сформировать строку,
+// в которой слова расположены в обратном порядке. В полученной строке слова должны быть также разделены пробелами.
+
+
+void PrintNewStringArray(string[] words)
+{
+  for (int i = words.Length - 1; i >= 0; i--)
+  {
+    Console.Write(" ");
+    if (i > 0)
+    {
+      Console.Write(" ");
+    }
+    Console.Write(words[i]);
+  }
+}
+
+Console.Write("Введите строку: ");
+string InputString = Console.ReadLine()!;
+string[] words = InputString.Split(' '); 
+PrintNewStringArray(words); 
+}
